@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="card">
+        <div class="search-box">
+            <input type="text" id="city-input" placeholder="Enter city name..." autocomplete="off">
+            <button id="search-btn"><i class="fa-solid => fa-magnifying-glass"></i> Search</button>
+            <button id="location-btn" title="Use Current Location"><i class="fa-solid fa-location-crosshairs"></i></button>
+        </div>
+
+        <div id="error-message" class="error hidden">
+            <p>City not found. Please check spelling and try again!</p>
+        </div>
+
+        <div id="weather-info" class="weather-info hidden">
+            <h2 id="city-name">City Name</h2>
+            <img id="weather-icon" src="" alt="Weather Icon">
+            <h1 id="temperature">--°C</h1>
+            <p id="weather-condition" class="condition">--</p>
+
+            <div class="details">
+                <div class="col">
+                    <i class="fa-solid fa-droplet"></i>
+                    <div>
+                        <p id="humidity">--%</p>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <i class="fa-solid fa-wind"></i>
+                    <div>
+                        <p id="wind-speed">-- km/h</p>
+                        <p>Wind Speed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
