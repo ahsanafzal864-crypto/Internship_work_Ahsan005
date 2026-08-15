@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag & Drop File Uploader | Internee.pk Task 3</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="uploader-card">
+        <h2>File Uploader</h2>
+        <p class="subtitle">Upload your images (JPG, PNG, GIF)</p>
+
+        <!-- Drop Area -->
+        <div class="drop-zone" id="drop-zone">
+            <i class="fa-solid fa-cloud-arrow-up drop-icon"></i>
+            <h3>Drag & Drop your image here</h3>
+            <p>or</p>
+            <button type="button" class="browse-btn" id="browse-btn">Browse Files</button>
+            <input type="file" id="file-input" accept="image/png, image/jpeg, image/gif" hidden>
+        </div>
+
+        <!-- Error Alert -->
+        <div id="error-message" class="error-msg hidden">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span id="error-text">Invalid file format. Please upload JPG, PNG, or GIF.</span>
+        </div>
+
+        <!-- Upload Progress Section -->
+        <div id="progress-container" class="progress-section hidden">
+            <div class="progress-info">
+                <span id="file-name" class="file-name">filename.png</span>
+                <span id="progress-percent">0%</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div id="progress-bar" class="progress-bar-fill"></div>
+            </div>
+        </div>
+
+        <!-- Image Preview Card -->
+        <div id="preview-container" class="preview-section hidden">
+            <div class="preview-header">
+                <h4>Uploaded Preview</h4>
+                <button id="remove-btn" class="remove-btn" title="Remove image">
+                    <i class="fa-solid fa-trash-can"></i>
+                </button>
+            </div>
+            <div class="img-wrapper">
+                <img id="preview-img" src="" alt="Image Preview">
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
