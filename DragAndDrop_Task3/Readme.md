@@ -5,7 +5,7 @@ A responsive, interactive image uploader built with HTML5, CSS3, and JavaScript 
 ---
 
 ## 🌐 Live Demo
-* **Live App:** [Insert your Vercel or GitHub Pages URL]
+* **Live App:** 
 * **Task Subfolder:** `DragAndDrop_Task3`
 
 ---
