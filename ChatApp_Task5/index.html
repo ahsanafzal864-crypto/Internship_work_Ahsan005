@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Chat App | Internee.pk Task 5</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="chat-container">
+        <!-- Chat Header -->
+        <div class="chat-header">
+            <div class="bot-info">
+                <div class="avatar-wrapper">
+                    <img src="https://api.dicebear.com/7.x/bottts/svg?seed=SupportBot" alt="Bot Avatar" class="avatar">
+                    <span class="status-dot"></span>
+                </div>
+                <div>
+                    <h3 class="bot-name">Support Bot</h3>
+                    <span class="bot-status" id="status-text">Online</span>
+                </div>
+            </div>
+            <button class="clear-chat-btn" id="clear-btn" title="Clear Conversation">
+                <i class="fa-solid fa-trash-can"></i>
+            </button>
+        </div>
+
+        <!-- Message Feed -->
+        <div class="chat-messages" id="chat-messages">
+            <!-- Messages inserted dynamically via JS -->
+        </div>
+
+        <!-- Typing Indicator -->
+        <div class="typing-indicator hidden" id="typing-indicator">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Chat Input Form -->
+        <form class="chat-input-form" id="chat-form">
+            <input 
+                type="text" 
+                id="message-input" 
+                placeholder="Type a message..." 
+                autocomplete="off"
+            >
+            <button type="submit" id="send-btn" title="Send message">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
