@@ -1,6 +1,6 @@
 # Task 3: Drag-and-Drop File Uploader (With Preview & Progress Bar)
 
-A responsive, interactive image uploader built with HTML5, CSS3, and JavaScript as part of the **Internee.pk Virtual Internship Program**.
+A responsive, interactive image uploader built with HTML5, CSS3, and JavaScript.
 
 ---
 
