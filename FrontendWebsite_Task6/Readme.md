@@ -1,6 +1,6 @@
 # Task 6: Frontend Development Best Practices & Interactive Showcase
 
-A modern, high-performance responsive web application demonstrating frontend best practices, interactive JavaScript UI components, and accessible design patterns built as part of the **Internee.pk Virtual Internship Program**.
+A modern, high-performance responsive web application demonstrating frontend best practices, interactive JavaScript UI components, and accessible design patterns built.
 
 ---
 
