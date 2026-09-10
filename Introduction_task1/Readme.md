@@ -1,6 +1,6 @@
 # Task 1: Virtual Internship Introduction
 
-Hi! I'm **Muhammad Ahsan**, a Software Engineering student at COMSATS University Islamabad. This repository folder contains my introduction task submission for the Internee.pk Virtual Internship Program.
+Hi! I'm **Muhammad Ahsan**, a Software Engineering student at COMSATS University Islamabad. 
 
 ---
 
