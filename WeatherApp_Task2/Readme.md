@@ -1,6 +1,6 @@
 # Task 2: Weather App Using API
 
-A dynamic, responsive Weather Application built using HTML, CSS, JavaScript, and the OpenWeatherMap API as part of the **Internee.pk Virtual Internship Program**.
+A dynamic, responsive Weather Application built using HTML, CSS, JavaScript, and the OpenWeatherMap API.
 
 ---
 
