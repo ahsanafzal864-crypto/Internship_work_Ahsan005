@@ -1,6 +1,6 @@
 # Task 5: Real-Time Chat App (Frontend Only)
 
-A responsive, feature-packed Real-Time Chat interface built using HTML5, modern CSS3, and JavaScript as part of the **Internee.pk Virtual Internship Program**.
+A responsive, feature-packed Real-Time Chat interface built using HTML5, modern CSS3, and JavaScript.
 
 ---
 
