@@ -1,6 +1,6 @@
 # Task 4: Multi-Step Form with Progress Indicator
 
-An interactive, responsive Multi-Step Form built using HTML5, CSS3, and modern JavaScript as part of the **Internee.pk Virtual Internship Program**.
+An interactive, responsive Multi-Step Form built using HTML5, CSS3, and modern JavaScript.
 
 ---
 
