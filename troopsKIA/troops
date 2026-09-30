@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casualty Documentation: 2025 Indo-Pak Border Clashes</title>
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            military: {
+              50: '#f9f8f4',    /* Crisp pale canvas / parchment */
+              100: '#f2efe7',   /* Light khaki sand background */
+              150: '#eae6db',   /* Desert border & card undertones */
+              200: '#ded7c6',   /* Muted field stone tint */
+              300: '#c5bb9f',   /* Tactical accent border */
+              500: '#7f7b58',   /* Olive field drab */
+              600: '#5a5d42',   /* Deep muted olive */
+              700: '#434631',   /* Dark olive text */
+              800: '#2d3120',   /* Heavy camo charcoal */
+              900: '#1b1d14',   /* High-contrast ink text */
+            },
+            camo: {
+              card: '#ffffff',
+              cardSubtle: '#f5f3eb',
+              border: '#dcd5c4',
+              tagIn: '#9a4e0c',
+              tagPk: '#1e633d'
+            }
+          }
+        }
+      }
+    };
+  </script>
+  
+  <style>
+    /* Custom light military scrollbars */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #eae6db;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #b5ac91;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #8e876e;
+    }
+  </style>
+</head>
+
+<body class="bg-military-100 text-military-900 min-h-screen flex flex-col font-sans selection:bg-military-300 selection:text-military-900">
+  
+  <!-- Tactical Top Dossier Bar -->
+  <header class="border-b border-camo-border bg-military-50/95 backdrop-blur sticky top-0 z-40 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center space-x-3.5">
+        <div class="w-10 h-10 rounded-lg bg-military-600 border border-military-700 flex items-center justify-center text-military-50 shadow-sm">
+          <svg class="w-5 h-5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-base sm:text-lg font-bold text-military-900 tracking-tight">Troops KIA Record Archive</h1>
+            <span class="px-2 py-0.5 text-[11px] font-mono font-semibold rounded border border-military-600/30 bg-military-600/10 text-military-700 uppercase tracking-wider">
+              Field Dossier
+            </span>
+          </div>
+          <p class="text-xs text-military-600 font-medium">Documented Losses of the 2025 Indo-Pak Clashes</p>
+        </div>
+      </div>
+      
+      <!-- Quick Metric Counters -->
+      <div class="flex items-center gap-2 text-xs font-mono">
+        <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-camo-border shadow-xs">
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-600"></span>
+          <span class="text-military-600 font-medium">Indian Forces:</span>
+          <span class="font-bold text-military-900" id="stat-india-count">16</span>
+        </div>
+        <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-camo-border shadow-xs">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-700"></span>
+          <span class="text-military-600 font-medium">Pak Forces:</span>
+          <span class="font-bold text-military-900" id="stat-pak-count">13</span>
+        </div>
+        <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-military-200/80 border border-military-300">
+          <span class="text-military-700 font-medium">Total KIA:</span>
+          <span class="font-bold text-military-900" id="stat-total-count">29</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+    
+    <!-- Advisory Banner -->
+    <div class="p-4 rounded-xl border border-camo-border bg-white shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div class="flex items-start gap-3">
+        <div class="p-2 rounded-lg bg-military-100 border border-military-300 text-military-700 mt-0.5">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <div class="text-xs sm:text-sm text-military-700 leading-relaxed">
+          <strong class="text-military-900 font-semibold">Verification & Cross-Referencing Notes:</strong>
+          Entries are compiled directly from defense communiqués and verified press dispatches. Note: Cross-check Indian records <code class="font-mono text-xs bg-military-100 px-1 py-0.5 rounded text-military-800">#01 / #15</code> (*Pawan Kumar*) and <code class="font-mono text-xs bg-military-100 px-1 py-0.5 rounded text-military-800">#04 / #07</code> (*Murali Naik*) across district rosters for potential duplicate dispatches.
+        </div>
+      </div>
+      <a href="#references-section" class="shrink-0 text-xs font-mono font-semibold text-military-700 hover:text-military-900 underline underline-offset-4 flex items-center gap-1">
+        <span>Source Directory [13]</span>
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="bg-military-50 p-4 rounded-xl border border-camo-border flex flex-col lg:flex-row gap-4 justify-between items-stretch lg:items-center shadow-xs">
+      
+      <!-- Faction Filters -->
+      <div class="flex flex-wrap items-center gap-1.5 p-1 bg-military-150/80 rounded-lg border border-camo-border self-start sm:self-auto">
+        <button id="filter-btn-all" onclick="setFactionFilter('all')" class="px-3.5 py-1.5 text-xs font-semibold rounded-md transition-all bg-military-600 text-white shadow-xs">
+          All Forces (<span id="tab-count-all">29</span>)
+        </button>
+        <button id="filter-btn-india" onclick="setFactionFilter('india')" class="px-3.5 py-1.5 text-xs font-semibold rounded-md transition-all text-military-700 hover:text-military-900">
+          Indian Forces (<span id="tab-count-india">16</span>)
+        </button>
+        <button id="filter-btn-pakistan" onclick="setFactionFilter('pakistan')" class="px-3.5 py-1.5 text-xs font-semibold rounded-md transition-all text-military-700 hover:text-military-900">
+          Pakistan Forces (<span id="tab-count-pak">13</span>)
+        </button>
+      </div>
+
+      <!-- Search & View Modifiers -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+        <!-- Search Field -->
+        <div class="relative min-w-[240px] sm:w-72">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-military-500">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+          <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Search by name, rank, unit..." 
+            oninput="handleSearch()"
+            class="w-full bg-white border border-camo-border text-xs rounded-lg pl-9 pr-3 py-2 text-military-900 placeholder-military-500 focus:outline-none focus:border-military-600 focus:ring-1 focus:ring-military-600 transition-colors shadow-xs"
+          />
+        </div>
+
+        <!-- View Mode Switcher -->
+        <div class="flex items-center rounded-lg border border-camo-border bg-military-150 p-0.5">
+          <button id="view-card-btn" onclick="setViewMode('cards')" title="Card Grid View" class="p-1.5 rounded-md bg-white text-military-800 shadow-xs border border-camo-border/60">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+            </svg>
+          </button>
+          <button id="view-table-btn" onclick="setViewMode('table')" title="Tabular Matrix View" class="p-1.5 rounded-md text-military-600 hover:text-military-900 transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Count Counter -->
+    <div id="resultsCountBanner" class="text-xs font-mono text-military-600 flex items-center justify-between px-1">
+      <span>Archived Records: <strong class="text-military-900" id="rendered-count">29</strong> verified personnel entries</span>
+    </div>
+
+    <!-- Tactical Cards View -->
+    <div id="cardsViewContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- Injected via JavaScript -->
+    </div>
+
+    <!-- Tabular Data View -->
+    <div id="tableViewContainer" class="hidden overflow-x-auto rounded-xl border border-camo-border bg-white shadow-xs">
+      <table class="w-full text-left text-xs">
+        <thead class="bg-military-50 border-b border-camo-border uppercase font-mono text-military-700">
+          <tr>
+            <th class="py-3 px-4 font-semibold">#</th>
+            <th class="py-3 px-4 font-semibold">Force / Nation</th>
+            <th class="py-3 px-4 font-semibold">Rank & Full Name</th>
+            <th class="py-3 px-4 font-semibold">Service Branch</th>
+            <th class="py-3 px-4 font-semibold">Cited Registry Sources</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody" class="divide-y divide-camo-border/60 text-military-800">
+          <!-- Injected via JavaScript -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Empty State Container -->
+    <div id="emptyPlaceholder" class="hidden p-12 text-center border-2 border-dashed border-camo-border rounded-xl bg-white/60">
+      <svg class="w-10 h-10 mx-auto text-military-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      <h3 class="text-sm font-semibold text-military-800">No personnel records found</h3>
+      <p class="text-xs text-military-600 mt-1">Adjust your search query or reset the faction filter.</p>
+    </div>
+
+    <!-- Documented References & Citations Registry -->
+    <section id="references-section" class="mt-12 pt-8 border-t border-camo-border">
+      <div class="mb-4">
+        <h2 class="text-sm font-bold uppercase tracking-wider text-military-800 font-mono">Documented References & Verification Registry</h2>
+        <p class="text-xs text-military-600 mt-0.5">Primary public documentation including news investigations, memorial listings, and government reports.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Indian Sources -->
+        <div class="rounded-xl border border-camo-border bg-white p-4 shadow-xs">
+          <div class="flex items-center gap-2 mb-3 pb-2.5 border-b border-camo-border text-xs font-bold text-amber-800">
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-600"></span>
+            Indian Documentation Sources [Ref 1 - 11]
+          </div>
+          <ol class="space-y-2 text-xs font-mono text-military-700 divide-y divide-military-100" id="indianReferencesList">
+            <!-- Populated via script -->
+          </ol>
+        </div>
+
+        <!-- Pakistani Sources -->
+        <div class="rounded-xl border border-camo-border bg-white p-4 shadow-xs">
+          <div class="flex items-center gap-2 mb-3 pb-2.5 border-b border-camo-border text-xs font-bold text-emerald-800">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-700"></span>
+            Pakistani Documentation Sources [Ref 1 - 2]
+          </div>
+          <ol class="space-y-2 text-xs font-mono text-military-700 divide-y divide-military-100" id="pakistanReferencesList">
+            <!-- Populated via script -->
+          </ol>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mt-auto border-t border-camo-border bg-military-50 py-5 text-center text-xs text-military-600 font-mono">
+    <div class="max-w-7xl mx-auto px-4">
+      <p>Archival documentation maintained for verification and open-source public record.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Primary Reference Records
+    const indianReferences = [
+      { id: 1, title: "The New Indian Express — Op Sindoor: Centre officially names 6 soldiers KIA", url: "https://www.newindianexpress.com/amp/story/india/2026/Jun/26/over-a-year-after-op-sindoor-centre-officially-names-six-soldiers-killed-in-action" },
+      { id: 2, title: "The Hindu — Army Jawan from AP killed in Pakistan firing at LoC", url: "https://www.thehindu.com/news/national/andhra-pradesh/army-jawan-from-aps-sathya-sai-district-killed-in-pakistan-firing-at-loc/article69556421.ece/amp/" },
+      { id: 3, title: "Honourpoint — Sepoy Sachin Yadav Memorial Profile", url: "https://honourpoint.in/profile/sepoy-sachin-yadav/" },
+      { id: 4, title: "Times of India — Grief grips Siwan village after jawan's martyrdom", url: "https://timesofindia.indiatimes.com/city/patna/grief-grips-siwan-village-after-jawans-martyrdom/amp_articleshow/121143778.cms" },
+      { id: 5, title: "NDTV — BSF Constable Deepak Chingakham killed in action, state honours", url: "https://www.ndtv.com/india-news/bsf-soldier-deepak-chingakham-killed-in-action-given-full-state-honours-in-manipur-he-was-fearless-says-bsf-ig-id-singh-8406771/amp/1" },
+      { id: 6, title: "Honourpoint — Havildar Suraj Singh Yadav Memorial Profile", url: "https://honourpoint.in/profile/havildar-suraj-singh-yadav/" },
+      { id: 7, title: "Deccan Herald — In Pics: Heroes India lost in Operation Sindoor", url: "https://www.deccanherald.com/ampstories/india/in-pics-heroes-india-lost-in-operation-sindoor-3537790" },
+      { id: 8, title: "Bhaskar English — Border Villages impact & Sub-Inspector Casualty", url: "https://www.bhaskarenglish.in/amp/national/news/impact-ceasefire-25-photos-border-villages-india-witness-return-normalcy-schools-reopen-pok-de-escalation-135017156.html" },
+      { id: 9, title: "The Indian Express — Shelling Casualty: Gunner Dinesh Sharma", url: "https://indianexpress.com/article/india/haryana-family-mourns-lance-naik-killed-in-pak-shelling-always-wanted-to-be-in-army-9991810/lite/" },
+      { id: 10, title: "The Indian Express — Subedar Major martyred in Pak shelling (Poonch)", url: "https://indianexpress.com/article/india/operation-sindoor-subedar-major-martyred-in-pak-shelling-was-to-retire-in-3-months-chose-poonch-for-posting-9995446/lite/" },
+      { id: 11, title: "Zee News Hindi — Op Sindoor: Sepoy Sikandar Raut Memorial", url: "https://zeenews.india.com/hindi/india/bihar-jharkhand/nalanda/operation-sindoor-bihar-another-son-martyred-sikandar-raut-came-home-a-month-ago-india-pakistan-war/2756844/amp" }
+    ];
+
+    const pakistanReferences = [
+      { id: 1, title: "Dawn — Official armed forces and PAF casualty report", url: "https://www.dawn.com/news/1910733" },
+      { id: 2, title: "Radio Pakistan — President expresses grief over martyrdom of personnel", url: "https://radio.gov.pk/14-05-2025/president-expresses-grief-over-martyrdom-of-two-armed-forces-personnel" }
+    ];
+
+    // Consolidated Casualty Database
+    const casualtyData = [
+      // Indian Losses
+      { id: "IN-01", faction: "india", rank: "Subedar Major", name: "Pawan Kumar", branch: "Indian Army", refs: [1] },
+      { id: "IN-02", faction: "india", rank: "Rifleman", name: "Sunil Kumar", branch: "Indian Army", refs: [1] },
+      { id: "IN-03", faction: "india", rank: "Lance Naik", name: "Dinesh Kumar", branch: "Indian Army", refs: [1] },
+      { id: "IN-04", faction: "india", rank: "Agniveer", name: "Mood Muralinaik", branch: "Indian Army", refs: [1] },
+      { id: "IN-05", faction: "india", rank: "Havildar", name: "Sunil Kumar Singh", branch: "Indian Army", refs: [1] },
+      { id: "IN-06", faction: "india", rank: "Sergeant", name: "Surendra Kumar", branch: "Indian Air Force", refs: [1] },
+      { id: "IN-07", faction: "india", rank: "Sepoy", name: "Murali Naik", branch: "Indian Army", refs: [2] },
+      { id: "IN-08", faction: "india", rank: "Sepoy", name: "Sachin Yadav", branch: "Indian Army", refs: [3] },
+      { id: "IN-09", faction: "india", rank: "Sepoy", name: "RamBabu Parshad", branch: "Indian Army", refs: [4] },
+      { id: "IN-10", faction: "india", rank: "Constable", name: "Deepak Chingakham", branch: "Border Security Force", refs: [5] },
+      { id: "IN-11", faction: "india", rank: "Havildar", name: "Suraj Singh Yadav", branch: "Indian Army", refs: [6] },
+      { id: "IN-12", faction: "india", rank: "Sepoy", name: "Amit Chaudhri", branch: "Indian Army", refs: [7] },
+      { id: "IN-13", faction: "india", rank: "Sub-Inspector", name: "Imtiaz Hussain", branch: "Police / Paramilitary", refs: [8] },
+      { id: "IN-14", faction: "india", rank: "Gunner", name: "Dinesh Sharma", branch: "Indian Army (Artillery)", refs: [9] },
+      { id: "IN-15", faction: "india", rank: "Subedar", name: "Pawan Kumar", branch: "Indian Army", refs: [10] },
+      { id: "IN-16", faction: "india", rank: "Sepoy", name: "Sikandar Raut", branch: "Indian Army", refs: [11] },
+
+      // Pakistani Losses
+      { id: "PK-01", faction: "pakistan", rank: "Naik", name: "Abdul Rehman", branch: "Pakistan Army", refs: [1] },
+      { id: "PK-02", faction: "pakistan", rank: "Lance Naik", name: "Dilawar Khan", branch: "Pakistan Army", refs: [1] },
+      { id: "PK-03", faction: "pakistan", rank: "Lance Naik", name: "Ikramullah", branch: "Pakistan Army", refs: [1] },
+      { id: "PK-04", faction: "pakistan", rank: "Naik", name: "Waqar Khalid", branch: "Pakistan Army", refs: [1] },
+      { id: "PK-05", faction: "pakistan", rank: "Sepoy", name: "Muhammad Adeel Akbar", branch: "Pakistan Army", refs: [1] },
+      { id: "PK-06", faction: "pakistan", rank: "Sepoy", name: "Nisar", branch: "Pakistan Army", refs: [1] },
+      { id: "PK-07", faction: "pakistan", rank: "Squadron Leader", name: "Usman Yousuf", branch: "Pakistan Air Force", refs: [1] },
+      { id: "PK-08", faction: "pakistan", rank: "Chief Technician", name: "Aurangzeb", branch: "Pakistan Air Force", refs: [1] },
+      { id: "PK-09", faction: "pakistan", rank: "Technician", name: "Najeeb", branch: "Pakistan Air Force", refs: [1] },
+      { id: "PK-10", faction: "pakistan", rank: "Corporal Technician", name: "Farooq", branch: "Pakistan Air Force", refs: [1] },
+      { id: "PK-11", faction: "pakistan", rank: "Technician", name: "Mubashir", branch: "Pakistan Air Force", refs: [1] },
+      { id: "PK-12", faction: "pakistan", rank: "Technician", name: "Muhammad Ayaz", branch: "Pakistan Air Force / Tech", refs: [2] },
+      { id: "PK-13", faction: "pakistan", rank: "Havaldar", name: "Muhammad Naveed", branch: "Pakistan Army", refs: [2] }
+    ];
+
+    // UI State
+    let currentFaction = "all";
+    let currentSearchTerm = "";
+    let currentViewMode = "cards";
+
+    function getFilteredRecords() {
+      return casualtyData.filter(item => {
+        const matchesFaction = currentFaction === 'all' || item.faction === currentFaction;
+        const query = currentSearchTerm.toLowerCase();
+        const matchesSearch = 
+          item.name.toLowerCase().includes(query) ||
+          item.rank.toLowerCase().includes(query) ||
+          item.branch.toLowerCase().includes(query) ||
+          item.id.toLowerCase().includes(query);
+        return matchesFaction && matchesSearch;
+      });
+    }
+
+    function renderCards(records) {
+      const container = document.getElementById('cardsViewContainer');
+      container.innerHTML = '';
+
+      records.forEach(item => {
+        const isIndia = item.faction === 'india';
+        
+        // Military light card styling
+        const borderTone = isIndia 
+          ? 'border-amber-300 hover:border-amber-500 bg-white hover:shadow-md' 
+          : 'border-emerald-300 hover:border-emerald-600 bg-white hover:shadow-md';
+        
+        const badgeStyle = isIndia
+          ? 'bg-amber-100 text-amber-800 border-amber-300'
+          : 'bg-emerald-100 text-emerald-800 border-emerald-300';
+
+        const flagLabel = isIndia ? 'Indian Forces' : 'Pakistan Forces';
+
+        const refList = isIndia ? indianReferences : pakistanReferences;
+        const refChips = item.refs.map(rNum => {
+          const refObj = refList.find(r => r.id === rNum);
+          const link = refObj ? refObj.url : '#references-section';
+          return `
+            <a href="${link}" target="_blank" rel="noopener noreferrer" 
+               class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-mono bg-military-50 border border-camo-border hover:border-military-600 hover:bg-military-100 text-military-800 transition-colors"
+               title="${refObj ? refObj.title : 'View Source'}">
+              <span>[Ref ${rNum}]</span>
+              <svg class="w-2.5 h-2.5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+            </a>
+          `;
+        }).join('');
+
+        const card = document.createElement('div');
+        card.className = `p-4 rounded-xl border transition-all duration-200 flex flex-col justify-between shadow-xs ${borderTone}`;
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center justify-between text-xs mb-2">
+              <span class="px-2.5 py-0.5 rounded-full font-mono text-[11px] font-semibold border ${badgeStyle}">
+                ${flagLabel}
+              </span>
+              <span class="font-mono text-[11px] text-military-500 font-medium">${item.id}</span>
+            </div>
+            <div class="mt-2.5">
+              <span class="text-xs uppercase font-mono tracking-wider text-military-600 font-semibold">${item.rank}</span>
+              <h3 class="text-base font-bold text-military-900 tracking-tight mt-0.5">${item.name}</h3>
+            </div>
+            <div class="mt-2.5 flex items-center gap-2 text-xs text-military-600 font-medium">
+              <span class="w-1.5 h-1.5 rounded-full bg-military-400"></span>
+              <span>${item.branch}</span>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-military-150 flex items-center justify-between">
+            <span class="text-[11px] font-mono text-military-500">Source:</span>
+            <div class="flex flex-wrap gap-1">
+              ${refChips}
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function renderTable(records) {
+      const tbody = document.getElementById('tableBody');
+      tbody.innerHTML = '';
+
+      records.forEach((item, index) => {
+        const isIndia = item.faction === 'india';
+        const refList = isIndia ? indianReferences : pakistanReferences;
+        
+        const badgeColor = isIndia 
+          ? 'bg-amber-100 text-amber-900 border-amber-300' 
+          : 'bg-emerald-100 text-emerald-900 border-emerald-300';
+
+        const linksHtml = item.refs.map(rNum => {
+          const refObj = refList.find(r => r.id === rNum);
+          return `<a href="${refObj ? refObj.url : '#'}" target="_blank" rel="noopener noreferrer" class="text-military-700 hover:text-military-900 font-semibold underline underline-offset-2 mr-2 font-mono text-xs">[Ref ${rNum}]</a>`;
+        }).join('');
+
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-military-50 transition-colors';
+        tr.innerHTML = `
+          <td class="py-3 px-4 font-mono text-military-500">${index + 1}</td>
+          <td class="py-3 px-4">
+            <span class="px-2.5 py-0.5 text-[11px] rounded border font-mono font-medium ${badgeColor}">
+              ${isIndia ? 'India' : 'Pakistan'}
+            </span>
+          </td>
+          <td class="py-3 px-4">
+            <span class="font-mono text-xs text-military-600 font-medium">${item.rank}</span>
+            <span class="font-bold text-military-900 ml-1.5">${item.name}</span>
+          </td>
+          <td class="py-3 px-4 text-military-700 font-medium">${item.branch}</td>
+          <td class="py-3 px-4">${linksHtml}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function updateDisplay() {
+      const filtered = getFilteredRecords();
+      document.getElementById('rendered-count').innerText = filtered.length;
+
+      const emptyBox = document.getElementById('emptyPlaceholder');
+      const cardsBox = document.getElementById('cardsViewContainer');
+      const tableBox = document.getElementById('tableViewContainer');
+
+      if (filtered.length === 0) {
+        cardsBox.classList.add('hidden');
+        tableBox.classList.add('hidden');
+        emptyBox.classList.remove('hidden');
+        return;
+      }
+
+      emptyBox.classList.add('hidden');
+
+      if (currentViewMode === 'cards') {
+        cardsBox.classList.remove('hidden');
+        tableBox.classList.add('hidden');
+        renderCards(filtered);
+      } else {
+        cardsBox.classList.add('hidden');
+        tableBox.classList.remove('hidden');
+        renderTable(filtered);
+      }
+    }
+
+    function setFactionFilter(faction) {
+      currentFaction = faction;
+      
+      const btnAll = document.getElementById('filter-btn-all');
+      const btnIn = document.getElementById('filter-btn-india');
+      const btnPk = document.getElementById('filter-btn-pakistan');
+
+      const activeClass = "bg-military-600 text-white shadow-xs font-semibold";
+      const inactiveClass = "text-military-700 hover:text-military-900 font-semibold";
+
+      btnAll.className = `px-3.5 py-1.5 text-xs rounded-md transition-all ${faction === 'all' ? activeClass : inactiveClass}`;
+      btnIn.className = `px-3.5 py-1.5 text-xs rounded-md transition-all ${faction === 'india' ? activeClass : inactiveClass}`;
+      btnPk.className = `px-3.5 py-1.5 text-xs rounded-md transition-all ${faction === 'pakistan' ? activeClass : inactiveClass}`;
+
+      updateDisplay();
+    }
+
+    function handleSearch() {
+      currentSearchTerm = document.getElementById('searchInput').value.trim();
+      updateDisplay();
+    }
+
+    function setViewMode(mode) {
+      currentViewMode = mode;
+      const cardBtn = document.getElementById('view-card-btn');
+      const tableBtn = document.getElementById('view-table-btn');
+
+      if (mode === 'cards') {
+        cardBtn.className = "p-1.5 rounded-md bg-white text-military-800 shadow-xs border border-camo-border/60";
+        tableBtn.className = "p-1.5 rounded-md text-military-600 hover:text-military-900 transition-colors";
+      } else {
+        cardBtn.className = "p-1.5 rounded-md text-military-600 hover:text-military-900 transition-colors";
+        tableBtn.className = "p-1.5 rounded-md bg-white text-military-800 shadow-xs border border-camo-border/60";
+      }
+      updateDisplay();
+    }
+
+    // Populate references at the footer section
+    function populateReferences() {
+      const inContainer = document.getElementById('indianReferencesList');
+      const pkContainer = document.getElementById('pakistanReferencesList');
+
+      indianReferences.forEach(ref => {
+        const li = document.createElement('li');
+        li.className = 'pt-2.5 pb-1 flex items-start gap-2 group';
+        li.innerHTML = `
+          <span class="text-amber-800 font-bold shrink-0">[${ref.id}]</span>
+          <a href="${ref.url}" target="_blank" rel="noopener noreferrer" class="hover:text-military-900 hover:underline transition-colors flex items-center gap-1.5 break-all">
+            <span>${ref.title}</span>
+            <svg class="w-3.5 h-3.5 shrink-0 text-military-400 group-hover:text-military-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
+          </a>
+        `;
+        inContainer.appendChild(li);
+      });
+
+      pakistanReferences.forEach(ref => {
+        const li = document.createElement('li');
+        li.className = 'pt-2.5 pb-1 flex items-start gap-2 group';
+        li.innerHTML = `
+          <span class="text-emerald-800 font-bold shrink-0">[${ref.id}]</span>
+          <a href="${ref.url}" target="_blank" rel="noopener noreferrer" class="hover:text-military-900 hover:underline transition-colors flex items-center gap-1.5 break-all">
+            <span>${ref.title}</span>
+            <svg class="w-3.5 h-3.5 shrink-0 text-military-400 group-hover:text-military-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
+          </a>
+        `;
+        pkContainer.appendChild(li);
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      populateReferences();
+      updateDisplay();
+    });
+  </script>
+</body>
+</html>
